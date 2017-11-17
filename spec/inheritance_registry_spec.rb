@@ -83,7 +83,7 @@ describe Lumber::InheritanceRegistry do
     end
 
     it "doesn't add an inheritance handler multiple times" do
-      Object.singleton_class.should_receive(:alias_method_chain).once.and_call_original
+      Object.singleton_class.should_receive(:alias_method).twice.and_call_original
       defined?(Object.inherited_with_lumber_registry).should be_falsey
       InheritanceRegistry.register_inheritance_handler
       defined?(Object.inherited_with_lumber_registry).should be_truthy
